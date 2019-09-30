@@ -1,0 +1,5 @@
+yarn install
+如果网络状况不佳，可以使用 cnpm 进行加速，并使用 cnpm 代替 yarn
+或者设置 yarn 的 npm 加载源，如 yarn config set registry https://registry.npm.taobao.org
+
+yarn run serve
