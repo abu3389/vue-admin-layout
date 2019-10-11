@@ -1,5 +1,5 @@
-import Main from '@/components/main'
-import parentView from '@/components/parent-view'
+import Main from '@/components/main' // 整个网站容器
+import parentView from '@/components/parent-view' // 右侧内容的容器
 
 /**
  * iview-admin中meta除了原生参数外可配置的参数:
@@ -8,7 +8,7 @@ import parentView from '@/components/parent-view'
  *         显示在侧边栏、面包屑和标签栏的文字
  *         使用'{{ 多语言字段 }}'形式结合多语言使用，例子看多语言的路由配置;
  *         可以传入一个回调函数，参数是当前路由对象，例子看动态路由和带参路由
- *  hideInBread: (false) 设为true后此级路由将不会出现在面包屑中，示例看QQ群路由配置
+ *  hideInBread: (false) 设为true后此级路由将不会出现在面包屑中，
  *  hideInMenu: (false) 设为true后在左侧菜单不会显示该页面选项
  *  notCache: (false) 设为true后页面在切换标签后不会缓存，如果需要缓存，无需设置这个字段，而且需要设置页面组件name属性和路由配置的name一致
  *  access: (null) 可访问该页面的权限数组，当前路由设置的权限会影响子路由
@@ -51,34 +51,6 @@ export default [
     ]
   },
   {
-    path: '',
-    name: 'doc',
-    meta: {
-      title: '文档',
-      href: 'https://lison16.github.io/iview-admin-doc/#/',
-      icon: 'ios-book'
-    }
-  },
-  {
-    path: '/join',
-    name: 'join',
-    component: Main,
-    meta: {
-      hideInBread: true
-    },
-    children: [
-      {
-        path: 'join_page',
-        name: 'join_page',
-        meta: {
-          icon: '_qq',
-          title: 'QQ群'
-        },
-        component: () => import('@/view/join-page.vue')
-      }
-    ]
-  },
-  {
     path: '/message',
     name: 'message',
     component: Main,
@@ -107,6 +79,64 @@ export default [
     },
     component: Main,
     children: [
+      {
+        path: '/update',
+        name: 'update',
+        meta: {
+          icon: 'md-cloud-upload',
+          title: '文件上传'
+        },
+        component: parentView,
+        children: [
+          {
+            path: 'update_table_page',
+            name: 'update_table_page',
+            meta: {
+              icon: 'ios-document',
+              title: '上传Csv'
+            },
+            component: () => import('@/view/update/update-table.vue')
+          },
+          {
+            path: '/excel',
+            name: 'excel',
+            meta: {
+              icon: 'ios-stats',
+              title: 'EXCEL导入导出'
+            },
+            component: parentView,
+            children: [
+              {
+                path: 'upload-excel',
+                name: 'upload-excel',
+                meta: {
+                  icon: 'md-add',
+                  title: '导入EXCEL'
+                },
+                component: () => import('@/view/excel/upload-excel.vue')
+              },
+              {
+                path: 'export-excel',
+                name: 'export-excel',
+                meta: {
+                  icon: 'md-download',
+                  title: '导出EXCEL'
+                },
+                component: () => import('@/view/excel/export-excel.vue')
+              }
+            ]
+          },
+          {
+            path: 'update_paste_page',
+            name: 'update_paste_page',
+            meta: {
+              icon: 'md-clipboard',
+              title: '粘贴表格数据'
+            },
+            component: () => import('@/view/update/update-paste.vue')
+          }
+        ]
+      },
       {
         path: 'tree_select_page',
         name: 'tree_select_page',
@@ -214,64 +244,6 @@ export default [
           title: '自定义图标'
         },
         component: () => import('@/view/components/icons/icons.vue')
-      }
-    ]
-  },
-  {
-    path: '/update',
-    name: 'update',
-    meta: {
-      icon: 'md-cloud-upload',
-      title: '数据上传'
-    },
-    component: Main,
-    children: [
-      {
-        path: 'update_table_page',
-        name: 'update_table_page',
-        meta: {
-          icon: 'ios-document',
-          title: '上传Csv'
-        },
-        component: () => import('@/view/update/update-table.vue')
-      },
-      {
-        path: 'update_paste_page',
-        name: 'update_paste_page',
-        meta: {
-          icon: 'md-clipboard',
-          title: '粘贴表格数据'
-        },
-        component: () => import('@/view/update/update-paste.vue')
-      }
-    ]
-  },
-  {
-    path: '/excel',
-    name: 'excel',
-    meta: {
-      icon: 'ios-stats',
-      title: 'EXCEL导入导出'
-    },
-    component: Main,
-    children: [
-      {
-        path: 'upload-excel',
-        name: 'upload-excel',
-        meta: {
-          icon: 'md-add',
-          title: '导入EXCEL'
-        },
-        component: () => import('@/view/excel/upload-excel.vue')
-      },
-      {
-        path: 'export-excel',
-        name: 'export-excel',
-        meta: {
-          icon: 'md-download',
-          title: '导出EXCEL'
-        },
-        component: () => import('@/view/excel/export-excel.vue')
       }
     ]
   },

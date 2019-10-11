@@ -1,0 +1,153 @@
+.zh-plant-div{
+    width: 100%;
+    text-align: center;
+}
+
+.zh-plant-div1 {
+    width: 100%;
+}
+
+.zh-plant-div2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    text-align: lezh;
+}
+
+.formStyle {
+    margin: 0 auto;
+    padding-top: 50px;
+    padding-bottom: 40px;
+    text-align: left;
+}
+
+.zh_form {
+    margin: 20px 100px 20px 20px;
+}
+
+.zh_form input {
+    width: 420px;
+    border-radius: 30px;
+}
+
+.zh_form .ivu-select-dropdown{
+    width: 420px !important;
+}
+
+.zh-plant-chooseType>.ivu-form-item-label {
+    color: #2F60BD !important;
+    font-size: 16px !important;
+}
+
+.zh-plant-chooseType>.ivu-form-item-label {
+    color: #2F60BD !important;
+    font-size: 16px !important;
+}
+.zh-plant-chooseType .ivu-select-selection{
+    border-radius: 30px;
+    width: 420px;
+}
+.textCenter {
+    text-align: center;
+}
+
+.agreetDiv{
+    width: 500px;
+    word-wrap: break-word;
+    white-space: normal;
+    color: #3162BE;
+    padding: 30px 0;
+    text-align: left;
+}
+
+.radioText{
+    display:inline-block;
+    width:450px;
+    vertical-align: middle;
+    font-size: 13px;
+}
+
+.zh-nextBtnDiv {
+    margin-top: 10px !important;
+    margin-bottom: 10px;
+}
+
+.zh-nextBtn {
+    width: 400px;
+    height: 45px;
+    background-color: #3162BE;
+    font-size: 14px;
+}
+
+.zh-getCodeBtn {
+    width: 150px;
+    background-color: #3162BE;
+}
+
+.code_msg{
+    margin-top: 30px;
+    text-align: center;
+}
+
+.code_msg span{
+    color: #3162BE;
+    font-size: 15px;
+}
+
+.code_img{
+    margin: 40px 0;
+}
+
+.code_img img{
+    /* border: 1px solid red; */
+    display: inline-block;
+    width: 200px;
+    height: 200px;
+}
+
+.uploadDiv{
+    display: inline-block;
+    width: 230px;
+    height: 150px;
+    margin: 7px;
+}
+
+.uploadDiv .ivu-upload-drag{
+    height: 100%;
+    border: 1px solid #C1CFEB;
+}
+
+.uploadDiv p{
+    color:#3162BE; 
+}
+
+.zh_form .ivu-input-wrapper{
+    width: auto;
+}
+
+.reg_groupSelect{
+    height: 30px;
+}
+.reg_groupSelect>div{
+    display: inline-block;
+}
+.reg_groupSelect span{
+    height: 30px;
+    line-height: 30px; 
+    width: 200px;
+    display: inline-block;
+    font-size: 13px;
+    color: #3162BE;
+    border: 1px solid #DDDEE1;
+    border-radius: 30px;
+    margin-right: 15px;
+    text-align: center;
+}
+.reg_groupSelect span:hover{
+    cursor: pointer;
+}
+
+.reg_chooseFocus{
+    background: #3162BE;
+    color: white!important;
+}

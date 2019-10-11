@@ -1,0 +1,505 @@
+.lock-screen-back {
+  border-radius: 50%;
+  z-index: -1;
+  box-shadow: 0 0 0 0 #667aa6 inset;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 3s;
+}
+.tags-outer-scroll-con .btn-con {
+  position: absolute;
+  top: 0px;
+  height: 100%;
+  background: #fff;
+  padding-top: 3px;
+  z-index: 10;
+}
+.tags-outer-scroll-con .btn-con.left-btn {
+  left: 0px;
+  box-shadow: -3px -1px 15px 5px rgba(0, 0, 0, 0.1)
+}
+.tags-outer-scroll-con .btn-con button {
+  padding: 6px 10px;
+  line-height: 14px;
+  text-align: center;
+}
+.main {
+  .unlock-con {
+    width: 0px;
+    height: 0px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 11000;
+    
+  }
+  .ivu-badge-count{
+    right: -8px;
+  }
+  .main-header{
+    height: 64px;
+    background-color: #2083D8;
+    background-image: none;
+    box-shadow: 0 2px 1px 1px rgba(100, 100, 100, 0.1);
+    position: relative;
+    z-index: 11;
+  }
+  .sidebar-menu-con {
+    height: calc(~"100% - 60px");
+    position: fixed;
+    top: 64px;
+    left: 0;
+    z-index: 21;
+    transition: width 0.3s;
+  }
+  .layout-text {
+    display: inline-block;
+    white-space: nowrap;
+    position: absolute;
+  }
+  .main-hide-text .layout-text {
+    display: none;
+  }
+  &-content-container {
+    position: relative;
+  }
+  &-header-con {
+    box-sizing: border-box;
+    position: fixed;
+    display: block;
+    width: 100%;
+    height: 100px;
+    z-index: 20;
+    box-shadow: 0 2px 1px 1px rgba(100, 100, 100, 0.1);
+    transition: padding 0.3s;
+  }
+  &-breadcrumb {
+    padding: 8px 32px 0;
+  }
+  &-menu-left {
+    background: #464c5b;
+    height: 100%;
+  }
+  .tags-con {
+    height: 40px;
+    z-index: -1;
+    overflow: hidden;
+    background: #edf2fa;
+    .tags-outer-scroll-con {
+      position: relative;
+      box-sizing: border-box;
+      padding-right: 120px;
+      width: 100%;
+      height: 100%;
+      .tags-inner-scroll-body {
+        position: absolute;
+        padding: 2px 10px;
+        overflow: visible;
+        white-space: nowrap;
+        transition: left 0.3s ease;
+      }
+      .close-all-tag-con {
+        position: absolute;
+        right: 0;
+        top: 0;
+        box-sizing: border-box;
+        padding-top: 8px;
+        text-align: center;
+        width: 110px;
+        height: 100%;
+        background: white;
+        box-shadow: -3px 0 15px 3px rgba(0, 0, 0, 0.1);
+        z-index: 10;
+      }
+    }
+  }
+  &-header {
+    height: 64px;
+    background-color: #38b3ff;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='250' height='250' viewBox='0 0 20 20'%3E%3Cg %3E%3Cpolygon fill='%2340a9ff' points='20%2C10 10%2C0 0%2C0 20%2C20'/%3E%3Cpolygon fill='%2340a9ff' points='0%2C10 0%2C20 10%2C20'/%3E%3C/g%3E%3C/svg%3E");
+    box-shadow: 0 2px 1px 1px rgba(100, 100, 100, 0.1);
+    position: relative;
+    z-index: 11;
+    .navicon-con {
+      display: inline-block;
+    }
+    .header-middle-con {
+      position: absolute;
+      left: 290px;
+      top: 0;
+      right: 280px;
+      bottom: 0;
+      padding: 10px;
+      overflow: hidden;
+      color: #fff;
+      text-align: center;
+      .main-breadcrumb {
+        padding: 0px 40px 0;
+        color: #fff;
+        .ivu-breadcrumb a,
+        .ivu-breadcrumb span {
+          color: #fff;
+        }
+      }
+    }
+    .header-avator-con {
+      position: absolute;
+      right: 0;
+      top: 0;
+      height: 100%;
+      width: 300px;
+      color: #fff;
+      .switch-theme-con {
+        display: inline-block;
+        width: 40px;
+        height: 100%;
+      }
+      .message-con {
+        display: inline-block;
+        width: 30px;
+        // padding: 18px 0;
+        line-height: 64px;
+        text-align: center;
+        cursor: pointer;
+        i {
+          vertical-align: middle;
+        }
+      }
+      .change-skin {
+        font-size: 14px;
+        font-weight: 500;
+        padding-right: 5px;
+      }
+      .switch-theme {
+        height: 100%;
+      }
+      .user-dropdown {
+        &-menu-con {
+          position: absolute;
+          right: 0;
+          top: 0;
+          width: 150px;
+          height: 100%;
+          color: #fff;
+          .main-user-name {
+            display: inline-block;
+            width: 80px;
+            word-break: keep-all;
+            white-space: nowrap;
+            vertical-align: middle;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            text-align: right;
+            color: #fff;
+          }
+          .ivu-icon {
+            color: #fff;
+          }
+        }
+        &-innercon {
+          height: 100%;
+          padding-right: 14px;
+        }
+      }
+      .full-screen-btn-con {
+        display: inline-block;
+        width: 30px;
+        // padding: 18px 0;
+        line-height: 64px;
+        text-align: center;
+        cursor: pointer;
+        i {
+          vertical-align: middle;
+        }
+      }
+      .lock-screen-btn-con {
+        display: inline-block;
+        width: 30px;
+        padding: 18px 0;
+        text-align: center;
+        cursor: pointer;
+        i {
+          vertical-align: middle;
+        }
+      }
+    }
+  }
+  .single-page-con {
+    min-width: 1240px;
+    position: absolute;
+    top: 100px;
+    right: 0;
+    bottom: 0;
+    overflow: auto;
+    background-color: #f4f8ff;
+    z-index: 1;
+    transition: left 0.3s;
+    .single-page {
+      margin: 12px;
+    }
+  }
+  &-copy {
+    text-align: center;
+    padding: 10px 0 20px;
+    color: #9ea7b4;
+  }
+}
+.taglist-moving-animation-move {
+  transition: transform 0.3s;
+}
+.logo-con {
+  // padding: 7px;
+  text-align: center;
+  img {
+    height: 80px;
+    width: auto;
+    margin-top: -6px;
+    margin-left: 5px;
+  }
+}
+.menu-logo-con {
+  padding: 0;
+  // text-align: right;
+  padding: 14px 24px;
+  position: relative;
+  cursor: pointer;
+  z-index: 1;
+  transition: all 0.2s ease-in-out;
+  border-bottom: 0.05px solid #ccc;
+  color: #2F60BD;
+  font-size: 14px;
+  img {
+    height: 28px;
+    width: auto;
+    margin: 5px 5px 0px;
+  }
+}
+.ivu-btn-ghost:hover {
+  color: #495060;
+  background-color: #e4f3ff;
+  border-color: #66baff;
+}
+
+.close-icon:hover {
+  color: rgb(253, 89, 60);
+}
+.minus-icon:hover {
+  color: #40a9ff;
+}
+
+.ivu-loading-bar {
+  top: initial;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.searchD input{
+  border-radius: 15px;
+}
+
+.send-info {
+  position: relative;
+  padding: 4px 0px;
+  border-bottom: 1px solid #bbb;
+  line-height: 32px;
+}
+
+.layoutM {
+  height: 100%;
+  width: 100%;
+  padding-left: 260px;
+  position: relative;
+}
+.cardItem {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 250px;
+}
+.maininfo-warp {
+  border-top: 1px solid #e9eaec;
+  border-left: 1px solid #e9eaec;
+}
+.maininfo-col-label {
+  color: #666;
+  background-color: #f7f7f7;
+}
+.maininfo-col {
+  height: 38px;
+  line-height: 38px;
+  padding: 0 4px;
+  border-right: 1px solid #e9eaec;
+  border-bottom: 1px solid #e9eaec;
+}
+
+#ntcContent {
+  height: 400px;
+  resize: none;
+}
+#ntcRemark {
+  height: 120px;
+  resize: none;
+}
+
+.card-1::before {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: #3399ff;
+}
+.card-2 {
+  margin-top: 12px;
+}
+.card-2::before {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: #ff9900;
+}
+
+.tab-style-ls .ivu-tabs.ivu-tabs-card {
+  .ivu-tabs-bar  {
+    border-bottom: none;
+    .ivu-tabs-tab{
+      border-radius: 8px;
+      margin-right: 12px;
+      padding-left: 40px;
+      padding-right: 40px;
+      background: #f8f8f9;
+      color: #999;
+      border: 1px solid #bbb;
+    }
+    .ivu-tabs-tab-active{
+      border: 1px solid #3399ff;
+      background-color: #cee9ff;
+    }
+  }
+}
+
+.no-title-tabs .ivu-tabs.ivu-tabs-card .ivu-tabs-bar {
+  display: none;
+}
+
+.caseBtn {
+  width: 210px !important;
+
+  p {
+    width: 178px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+}
+
+.ellipsisText {
+  white-space: nowrap;
+  text-overflow:ellipsis;
+  overflow:hidden;
+}
+.vertical-center-modal{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .ivu-modal{
+      top: 0;
+  }
+}
+
+.ivu-card .ivu-card-head {
+  background-color: #38b3ff;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='250' height='250' viewBox='0 0 20 20'%3E%3Cg %3E%3Cpolygon fill='%2340a9ff' points='20%2C10 10%2C0 0%2C0 20%2C20'/%3E%3Cpolygon fill='%2340a9ff' points='0%2C10 0%2C20 10%2C20'/%3E%3C/g%3E%3C/svg%3E");
+  p {
+    color: #fff;
+  }
+}
+
+
+.tabls{
+  border-top: 1px solid #e9eaec;
+  border-right: 1px solid #e9eaec;
+  .noemalTb{
+    line-height: 37px;
+    text-align: left;
+    padding-left: 8px;
+    padding-right:8px;
+    min-height: 38px;
+    border-left: 1px solid #e9eaec;
+    border-bottom: 1px solid #e9eaec;
+  }
+  .th-header{
+    color: #fff;
+    background: #2083D8;
+  }
+  .tb-head{
+    background: #f8f8f9;
+    font-size:12px;
+  }
+}
+
+.bookbuilding-table {
+  width: 100%;
+  min-width: 600px;
+  border-top: 1px solid #e9eaec;
+  border-right: 1px solid #e9eaec;
+  margin-bottom:15px;
+  .noemalTb{
+      border-left: 1px solid #e9eaec;
+      border-bottom: 1px solid #e9eaec;
+      line-height: 37px;
+      text-align: left;
+      padding-left: 8px;
+      min-height: 38px;
+  }
+  .tb-head{
+      background: #f8f8f9;
+      font-size:12px;
+  }
+  .th-header{
+      color: #fff;
+      background: #2083D8;
+  }
+ 
+}
+
+.button-clas{
+  margin-top:10px;
+  margin-bottom:10px;
+  text-align: center;
+  button{
+      border-radius: 18px;
+      margin-right:20px;
+  }
+}
+
+.change-tab{
+  margin-bottom:10px;
+  background: #2083D8;
+  color: #fff;
+  height:50px;
+  cursor: pointer;
+  .selTab{
+      display: inline-block;
+      height: 50px;
+      width: 140px;
+      text-align: center;
+      float: left;
+      span{
+          line-height: 50px;
+      }
+  }
+  .tabOn{
+      background: #fff;
+      color: #000;
+      border: 1px solid #2083D8;
+  }
+}
+
+.ivu-tooltip-inner {
+  white-space: initial
+}

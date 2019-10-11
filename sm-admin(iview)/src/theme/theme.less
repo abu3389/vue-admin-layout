@@ -1,0 +1,131 @@
+@import "~iview/src/styles/index.less";
+
+@primary-color: #40a9ff;
+
+.ivu-input:focus,
+.ivu-input:hover {
+  border-color: #40a9ff;
+}
+
+.ivu-tag-blue,
+.ivu-tag-blue.ivu-tag-dot .ivu-tag-dot-inner {
+  background: #40a9ff;
+}
+
+// modal-confirm
+.ivu-modal-confirm-head-title {
+  font-size: 18px;
+}
+.ivu-modal-confirm-body {
+  font-size: 16px;
+}
+.ivu-modal-confirm-footer {
+    margin-top: 20px;
+}
+
+.border-btn {
+  border-color: #40a9ff;
+  background: #e8f8fe;
+}
+.border-btn:hover {
+  border-color: #40a9ff;
+  background: #40a9ff;
+  color: #fff;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+  -webkit-box-shadow: inset 1px 1px 0 rgba(0, 0, 0, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  -webkit-box-shadow: inset 1px 1px 0 rgba(0, 0, 0, 0.1);
+}
+
+::-webkit-scrollbar {
+  width: 16px;
+  height: 16px;
+}
+
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  border: 5px solid transparent;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1) inset;
+}
+
+::-webkit-scrollbar-thumb {
+  min-height: 20px;
+  background-clip: content-box;
+  box-shadow: 0 0 0 5px rgba(0, 0, 0, 0.1) inset;
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+.ivu-menu-vertical.ivu-menu-light:after {
+  display: none;
+}
+#courtdate .ivu-collapse-header {
+    padding-left: 6px;
+    color: #999;
+}
+#courtdate .ivu-collapse-content>.ivu-collapse-content-box {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    font-size: 12px;
+}
+.right-wrapper {
+    .ivu-card {
+        margin-bottom: 20px;
+        .ivu-card-head {
+            border-top: 2px solid #40a9ff;
+            p {
+                color: #777;
+            }
+            .right-btn {
+                float: right;
+                cursor: pointer;
+                color: #40a9ff;
+            }
+        }
+    }
+}
+.vertical-center-modal{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .ivu-modal{
+        top: 0;
+    }
+}
+.ivu-modal-header-inner, .ivu-modal-header p {
+    display: inline-block;
+    width: 100%;
+    height: 20px;
+    line-height: 20px;
+    font-size: 16px;
+    color: #1c2438;
+    font-weight: 700;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.ivu-modal-body {
+    padding: 16px;
+    font-size: 14px;
+    line-height: 1.5;
+}
