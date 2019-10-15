@@ -2,9 +2,9 @@ import Main from '@/views/Main.vue';
 import Login from '@/views/login.vue';
 
 
-// 作为Login组件的子页面展示写在loginRouter里
+// 作为未登录的组件的子页面展示写在loginRouter里
 export const loginRouter = {
-  path: '/courtfinance/',
+  path: '/courtfinance/index',
   name: 'loginRouter',
   redirect: '/courtfinance/login',
   component: Login,
@@ -36,7 +36,8 @@ export const loginRouter = {
   ]
 };
 
-// 作为Main组件的子页面展示在左侧菜单，这部分路由由后端获取动态加载
+// 作为已登录的组件的子页面，展示在左侧菜单，这部分路由由后端获取并且动态加载
+//（所以，登录系统管理员对菜单进行添加和设置后这里可以注释掉，但测试路由是否有效的时候可以先打开测试，这里注释的最好保持与菜单设置的一致，方便测试）
 export const appRouter = [
   // {
   //   path: '/courtfinance/sys',
@@ -68,11 +69,10 @@ export const appRouter = [
   // },
 ];
 
-// 作为Main组件的子页面展示但是不在左侧菜单显示的路由写在otherRouter里
+// 作为已登录的组件的子页面，但不展示在左侧菜单写在otherRouter里
 export const otherRouter = {
-  path: '/courtfinance/',
+  path: '/courtfinance/home',
   name: 'otherRouter',
-  redirect: '/courtfinance/home',
   component: Main,
   children: [
     {
@@ -96,16 +96,17 @@ export const otherRouter = {
   ]
 };
 
-// 不作为Main组件的子页面展示的页面单独写，如下
+// 一些全局展示的页面单独写，如下：
 
-export const page404 = {
-  path: '/courtfinance/*',
-  name: 'error-404',
-  meta: {
-    title: '404-页面不存在'
-  },
-  component: () => import('@/views/error-page/404.vue')
-};
+//由于动态获取的那部分路由是异步过程，page404需要与动态路由同步注入，否则刷新时由于还未获取到动态部分的路由时就已经匹配到这个404页面
+// export const page404 = {
+//   path: '/courtfinance/*',
+//   name: 'error-404',
+//   meta: {
+//     title: '404-页面不存在'
+//   },
+//   component: () => import('@/views/error-page/404.vue')
+// };
 
 export const page403 = {
   path: '/courtfinance/403',
@@ -132,5 +133,5 @@ export const routers = [
   ...appRouter,
   page500,
   page403,
-  page404,
+  // page404,
 ];

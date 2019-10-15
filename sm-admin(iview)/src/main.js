@@ -22,19 +22,8 @@ new Vue({
     },
     mounted () {
         util.initRouter(this);
-        // 权限菜单过滤相关
-        this.$store.commit('updateMenulist');
     },
     created () {
-        // let tagsList = [];
-        // appRouter.map((item) => {
-        //     if (item.children.length <= 1) {
-        //         tagsList.push(item.children[0]);
-        //     } else {
-        //         tagsList.push(...item.children);
-        //     }
-        // });
-        // this.$store.commit('setTagsList', tagsList);
     }
 });
 

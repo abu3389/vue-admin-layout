@@ -1,0 +1,26 @@
+基于iview-admin1.3.1的原思明法院项目剥离出来的前端框架，（保留基本的登陆注册、用户管理、角色管理、动态菜单路由管理），适用于法院后台功能业务快速部署和开发。
+
+依赖包安装指令：npm install
+项目启动指令：npm run dev
+项目打包指令：npm run build
+
+项目环境：Webpack-Cli3.3 + Vue2.5作为基本开发环境
+
+目录结构：
+.
+├── build  项目的开发环境和生产环境配置
+└── src 项目功能模块存放路径（此路径下都会被webpack编译）
+    ├── api  所有ajax请求接口都放这里
+    ├── components  业务组件（已集成封装Echart、七牛云上传、多文件格式在线查看浏览[pdf、图片、excel、world]、文本编辑器、等组件，可根据业务需要引入和修改）
+    ├── images  图片静态资源
+    ├── libs  封装工具函数（已集成一些常用的函数如：下载文件、时间转换、根据身份证计算出生年月、动态路由处理等等）
+    ├── router  路由配置
+    ├── store  Vuex配置
+    ├── style 框架内置组件公共样式
+    ├── theme  主题样式
+    ├── vendors 公共模块
+    ├── view  页面文件
+├── static 静态资源（不需要被webpack编译的，可以放一些JS或者JQ插件）
+
+iview官方UI组件库：
+https://iviewui.com/docs/guide/install

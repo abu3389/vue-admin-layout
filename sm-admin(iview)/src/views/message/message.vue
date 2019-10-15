@@ -49,7 +49,12 @@ export default {
                     click: () => {
                         store.dispatch('ModiNotice', params.row.id).then(res => {
                             if (res.data.state == 100) {
+                                this.$Notice.success({
+                                    title: '操作成功！',
+                                    desc: '已成功接收！'
+                                });
                                 this.hasreadMesList.unshift(this.currentMesList.splice(params.index, 1)[0]);
+                                this.init();
                             } else {
                                 this.$Message.error(res.data.message);
                             }
@@ -57,7 +62,7 @@ export default {
                         this.$store.commit('setMessageCount', this.unreadMesList.length);
                     }
                 }
-            }, '标为已读');
+            }, params.row.sendNoticeType=='诉前案件推送消息'? '确认接收':'标为已读');
         };
         const deleteMesBtn = (h, params) => {
             return h('Button', {
@@ -178,6 +183,14 @@ export default {
         };
     },
     methods: {
+        init(){
+            store.dispatch('ShowNotice').then(res => {
+                this.currentMesList = this.unreadMesList = this.$store.getters.new;
+                this.hasreadMesList = this.$store.getters.read;
+                this.unreadCount = this.unreadMesList.length;
+                this.hasreadCount = this.hasreadMesList.length;
+            })
+        },
         backMesTitleList () {
             this.showMesTitleList = true;
         },
@@ -203,12 +216,7 @@ export default {
 
     },
     mounted () {
-        store.dispatch('ShowNotice').then(res => {
-            this.currentMesList = this.unreadMesList = this.$store.getters.new;
-            this.hasreadMesList = this.$store.getters.read;
-            this.unreadCount = this.unreadMesList.length;
-            this.hasreadCount = this.hasreadMesList.length;
-        })
+      this.init();
     },
     watch: {
         unreadMesList (arr) {

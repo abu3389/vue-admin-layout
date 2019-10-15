@@ -58,10 +58,10 @@
                     <Input v-model="menuForm.url"/>
                   </Poptip>
                 </FormItem>
-                <FormItem label="路径" prop="path" v-if="menuForm.type===1">
+                <FormItem label="路由路径" prop="path" v-if="menuForm.type===1">
                   <Input v-model="menuForm.path"/>
                 </FormItem>
-                <FormItem label="前端组件" prop="component" v-if="menuForm.type===1">
+                <FormItem label="前端组件路径" prop="component" v-if="menuForm.type===1">
                   <Input v-model="menuForm.component"/>
                 </FormItem>
                 <FormItem label="权限码" prop="code" >

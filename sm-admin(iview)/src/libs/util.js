@@ -92,12 +92,13 @@ util.initRouter = function (vm) {
         if(ress.data.state == 100){
             roleTYpe = ress.data.data.roleType;
             // 加载菜单
-            //获取根据角色获取对应的菜单
+            //根据角色获取对应的菜单
             axios.get(getMenuList, 
                 {params:{'roleName': roleTYpe,platform:'courtfinance'}}
             ).then(res => {
                 if(res.data.state == 100){
                     let menuLi = [];
+                    //判断是否有菜单信息
                     if(res.data.roleMenus == [] || res.data.roleMenus.length == 0){
                         vm.$Message.warning({
                             content: '暂无权限',
@@ -126,26 +127,32 @@ util.initRouter = function (vm) {
                     res.data.roleMenus.sort(util.compare('orderNumber'))
                     //递归构造子路由
                     menuLi = util.pushChildren(res.data.roleMenus,"");
-                    console.log("menuLi",menuLi)
                     //取要展示在菜单的二级路由
                     let menuLis = menuLi[0].children;
-                    // 添加主界面路由
-                    vm.$store.commit('updateAppRouter', menuLis.filter(item => item.children.length > 0));
-                    // 更新界面菜单
+                    // 更新界面菜单显示
                     vm.$store.commit('updateMenulist', menuLis.filter(item => item.children.length > 0));
+                    // 添加主界面菜单路由
+                    vm.$store.commit('updateAppRouter', menuLis.filter(item => item.children.length > 0));
+                    // 同步注入404路由，page404需要与动态路由同步注入，如果直接写在路由在刷新时由于还未获取到动态部分的路由时就已经匹配到404页面
+                    vm.$store.commit('updateAppRouter', [
+                        {
+                            path: '/courtfinance/*',
+                            name: 'error-404',
+                            meta: {
+                                title: '404-页面不存在'
+                            },
+                            component: lazyLoading('error-page/404')
+                        }
+                    ]);
                     let tagsList = [];
-                    console.log("vm.$store.state.app.routers",vm.$store.state.app.routers)
+                    // 更新标签列表
                     vm.$store.state.app.routers.map((item) => {
-                        if (item && item.children && item.children.length <= 1) {
-                            tagsList.push(item.children[0]);
-                        } else {
+                        if (item && item.children && item.children.length >0) {
                             tagsList.push(...item.children);
                         }
                     });
                     vm.$store.commit('setTagsList', tagsList);
-                    console.log(vm.$store.state.app.menuList)
                 }
-                
             });
             //根据角色获取选项卡权限
             axios.get(getTabList, 
@@ -185,23 +192,19 @@ util.pushChildren = function (data,parent) {
             if (temp.length > 0) {
                 obj.children = temp;
             }
-            console.log("obj.component",obj.component)
             obj.component = lazyLoading(obj.component);
             // obj.component = vm.getViews(obj.component);
-
-            console.log("obj.component-after",obj.component)
             //将当前是父亲的路由放在数组里
             tree.push(obj);
         }
-    } 
-    console.log("tree",tree)
+    }
     return tree;
 }
 
 util.getViews=function(path) {
     return resolve => {
       require.ensure([], (require) => {
-        resolve(require('@' + path))
+        resolve(require('@/views/' + path + '.vue'))
       })
     }
 }
@@ -214,6 +217,5 @@ util.compare = function(property){
         return value1 - value2;
     }
 };
-
 
 export default util;

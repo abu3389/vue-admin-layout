@@ -696,17 +696,6 @@ export default {
           }
       }
       return tree;
-      // let that = this;
-      // for(let i in ary2){
-      //   for(let t in ary1){
-      //     if(ary2[i].fatherCode == ary1[t].code){
-      //       ary1[t].children.push(ary2[i]);
-      //       ary2.splice(i,1);
-      //       that.pushChildren(ary1[t].children,ary2)
-      //     }
-      //   }
-      // }
-      // return ary1;
     },
     submitPermEdit() {
       this.submitPermLoading = true;

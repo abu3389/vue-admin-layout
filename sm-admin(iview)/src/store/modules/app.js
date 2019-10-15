@@ -8,7 +8,6 @@ const app = {
     state: {
         cachePage: [],
         idDraw:false,   //收缩菜单
-        isCl:true,
         lang: '',
         isFullScreen: false,
         openedSubmenuArr: [], // 要展开的菜单数组
@@ -37,7 +36,7 @@ const app = {
         roLeName:"",    //角色
         caseId: '', //案件id
         breifName: '', //案件案由
-        litigantType:'',//原告类型
+        litigantType:'',//当事人类型
         agentType:'',//代理人类型
         routers: [],
         tagsList: [...otherRouter.children],
@@ -69,25 +68,20 @@ const app = {
         SET_ROLENAME: (state, ROLENAME) => {
             state.roLeName = ROLENAME;
         },
-        // 动态添加主界面路由
-        updateAppRouter(state, routes) {
-            console.log("routers",state.routers)
-            console.log("routes",routes)
-            state.routers.push(...routes);
-            console.log("123456789",state.routers)
-            router.addRoutes(routes);
+        // 动态添加主界面路由（即菜单路由）
+        updateAppRouter(state, appRouter) {
+            console.log("appRouter",appRouter)
+            state.routers.push(...appRouter);
+            router.addRoutes(appRouter);
         },
-        updateMenulist(state, routes) {
-            state.menuList = routes;
+        updateMenulist(state, appRouter) {
+            state.menuList = appRouter;
         },
         updateTablist(state, tabList) {
             state.tabList = tabList;
         },
         SET_ISDRAW: (state, idDraw) => {
             state.idDraw = idDraw;
-        },
-        SET_ISCL: (state, isCl) => {
-            state.isCl = isCl;
         },
         setTagsList (state, list) {
             state.tagsList.push(...list);
@@ -111,17 +105,12 @@ const app = {
                 state.openedSubmenuArr.push(name);
             }
         },
-        closePage (state, name) {
+        closePage (state, name) {//关闭页面，移除缓存的页面
             state.cachePage.forEach((item, index) => {
                 if (item === name) {
                     // state.cachePage.splice(index, 1);
                 }
             });
-        },
-        initCachepage (state) {
-            if (localStorage.cachePage) {
-                // state.cachePage = JSON.parse(localStorage.cachePage);
-            }
         },
         removeTag (state, name) {
             state.pageOpenedList.map((item, index) => {
@@ -139,7 +128,6 @@ const app = {
                 openedPage.query = get.query;
             }
             state.pageOpenedList.splice(get.index, 1, openedPage);
-            // localStorage.pageOpenedList = JSON.stringify(state.pageOpenedList);
         },
         clearAllTags (state) {
             state.pageOpenedList.splice(1);
@@ -160,10 +148,6 @@ const app = {
                 state.pageOpenedList.splice(currentIndex + 1);
                 state.pageOpenedList.splice(1, currentIndex - 1);
             }
-            let newCachepage = state.cachePage.filter(item => {
-                return item === currentName;
-            });
-            // state.cachePage = newCachepage;
             localStorage.pageOpenedList = JSON.stringify(state.pageOpenedList);
         },
         setOpenedList (state) {
@@ -191,12 +175,7 @@ const app = {
             state.messageCount = count;
         },
         increateTag (state, tagObj) {
-            if (!Util.oneOf(tagObj.name, state.dontCache)) {
-                // state.cachePage.push(tagObj.name);
-                // localStorage.cachePage = JSON.stringify(state.cachePage);
-            }
             state.pageOpenedList.push(tagObj);
-            // localStorage.pageOpenedList = JSON.stringify(state.pageOpenedList);
         }
     }
 };

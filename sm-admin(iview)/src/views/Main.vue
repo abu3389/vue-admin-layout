@@ -47,19 +47,18 @@
                           <b :style="{marginRight: '15px'}">{{nowLoginDay}}</b>
                           <b :style="{marginRight: '15px'}">{{weekStr}}</b>
                           <b :style="{}">{{nowClock}}</b>
-                          </span>
+                        </span>
                     </div>
                 </div>
                 <div class="header-avator-con">
                   <!-- v-model="mesCount" -->
-                    <message-tip  :value="mesCount" style="position: absolute;right: 180px"></message-tip>
-                    <div class="user-dropdown-menu-con"  style="position: absolute;right: 50px;">
+                    
+                    <div class="user-dropdown-menu-con"  style="position: absolute;right: 50px;width: 180px;">
                         <Row type="flex" justify="end" align="middle" class="user-dropdown-innercon">
                             <Dropdown transfer trigger="click" @on-click="handleClickUserDropdown">
                                 <a href="javascript:void(0)">
                                     <span class="main-user-name">{{ userName }}</span>
                                     <Icon type="arrow-down-b"></Icon>
-                                   
                                 </a>
                                 <DropdownMenu slot="list">
                                     <!-- <DropdownItem name="changePwd">修改密码</DropdownItem> -->
@@ -67,7 +66,8 @@
                                     <DropdownItem name="loginout" divided>退出登录</DropdownItem>
                                 </DropdownMenu>
                             </Dropdown>
-                             <Icon type="ios-contact-outline" style="font-size: 34px;margin-left: 10px;"></Icon>
+                            <message-tip  :value="mesCount"></message-tip>
+                            <Icon type="ios-contact-outline" style="font-size: 34px;margin-left: 10px;"></Icon>
                              <!-- <Icon type="ios-person-outline" ></Icon> -->
                              <!-- <Icon type="md-person"></Icon> -->
                             <!-- <Avatar :src="avatorPath" style="background: #619fe7;margin-left: 10px;"></Avatar> -->
@@ -133,14 +133,14 @@ export default {
   data() {
     var  validatepsw = function(rule, value, callback){
       let reg = new RegExp(/^(?![^a-zA-Z]+$)(?!\D+$)/);
-          if(!value){
-              return callback(new Error("请输入密码"));
-          }else if(!reg.test(value)){
-              return callback(new Error("密码必须同时包含字母和数字"))
-          }else{
-              callback();
-          }
-      };
+      if(!value){
+          return callback(new Error("请输入密码"));
+      }else if(!reg.test(value)){
+          return callback(new Error("密码必须同时包含字母和数字"))
+      }else{
+          callback();
+      }
+    };
 
     return {
       websock: null,
@@ -161,12 +161,13 @@ export default {
       isFullScreen: false,
       openedSubmenuArr: this.$store.state.app.openedSubmenuArr,
       ruleValidate:{
-        newpwd1:[{validator:validatepsw,trigger:'blur' },{min:8,message:'请输入最少8位'}],  
+        newpwd1:[{validator:validatepsw,trigger:'blur' },{min:8,message:'请输入最少8位'}],
       }
     };
   },
   created() {},
   computed: {
+    
     menuList() {
       console.log(this.$store.getters.roLeName)
       let menuListsARR = this.$store.state.app.menuList;
@@ -186,6 +187,7 @@ export default {
         }
         return menuLists;
       }
+      
     },
     pageTagsList() {
       return this.$store.state.app.pageOpenedList; // 打开的页面的页面对象
@@ -221,7 +223,7 @@ export default {
       );
       audio.play();
     },
-    asyncOK(name){
+     asyncOK(name){
         this.$refs[name].validate((valid) => {
                 if (!valid) {
                     this.isPass = false;
@@ -361,8 +363,7 @@ export default {
                         str += "六";  
                         break;  
         }
-        this.weekStr = str;  
-      // store.dispatch('ShowNotice');
+        this.weekStr = str;
     },
     toggleClick() {
       this.shrink = !this.shrink;
@@ -385,6 +386,8 @@ export default {
           });
         });
       }else if(name == "changePwd"){
+        console.log(this.$store.state.app.menuList)
+        // return false;
         this.addFormItem.oldpwd ="";
         this.addFormItem.newpwd1 ="";
         this.addFormItem.newpwd2 = "";
@@ -419,10 +422,12 @@ export default {
   },
   watch: {
     $route(to) {
-      this.$store.commit("setCurrentPageName", to.name);
       this.checkTag(to.name);
       localStorage.currentPageName = to.name;
     },
+    lang() {
+      // 在切换语言时
+    }
   },
   mounted() {
     this.init();

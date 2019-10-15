@@ -10,16 +10,9 @@ const user = {
     state: {
         access: [],
         name: '',
-        isdq:false,  //是否是殿前法院
         avatar: '',
     },
     mutations: {
-        SET_DATA: (state, data) => {
-            state.data = data;
-        },
-        SET_ISDQ: (state, isdq) => {
-            state.isdq = isdq;
-        },
         SET_NAME: (state, name) => {
             state.name = name;
         },
@@ -88,6 +81,7 @@ const user = {
                     });
             });
         },
+        //退出登录
         Logout ({
             commit
         }) {
