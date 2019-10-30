@@ -193,6 +193,7 @@ util.pushChildren = function (data,parent) {
                 obj.children = temp;
             }
             obj.component = lazyLoading(obj.component);
+            // 两种都可以
             // obj.component = vm.getViews(obj.component);
             //将当前是父亲的路由放在数组里
             tree.push(obj);
